@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "659c6250-f96d-44be-a3ca-84cc0f89fbdd",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "屏幕截图(10)": {
+      "ver": "1.0.3",
+      "uuid": "41f6903a-aa55-4553-ab9f-634bae76823a",
+      "rawTextureUuid": "659c6250-f96d-44be-a3ca-84cc0f89fbdd",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 1920,
+      "height": 1080,
+      "rawWidth": 1920,
+      "rawHeight": 1080,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
