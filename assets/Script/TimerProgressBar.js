@@ -27,7 +27,10 @@ cc.Class({
         //         this._bar = value;
         //     }
         // },
-        flag: false,
+            /* ProgressBar: {
+                default: null,
+                type: cc.ProgressBar,
+            } */
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -35,31 +38,14 @@ cc.Class({
     // onLoad () {},
 
     start () {
-        console.log("mask start");
-    },
 
-    hide: function(){
-        /* for(var i = 1; i <= 255; i++)
-        {
-            this.node.opacity--;
-        } */
-        //var func = function (obj) {obj.node.opacity -= 1;};
-        this.flag = true;
-        /* for(var i = 1; i <= 255; i++){
-            setTimeout(function () {this.node.opacity--;}.bind(this), 100);
-        }  */
     },
 
     update (dt) {
-        if(this.flag && this.node.scaleY >= 0.1)
+        if(this.node.getComponent('cc.ProgressBar').progress < 0.8)
         {
-            this.node.scaleY -= 0.1;
-            console.log(this.node.scaleY);
+            this.node.getComponent('cc.ProgressBar').progress += dt/10;
         }
-        else{
-            this.flag = false;
-        }
+        //console.log("haha");
     },
 });
-// 以上语句就是将一个对象传给cc.Class
-

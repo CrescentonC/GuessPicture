@@ -27,39 +27,23 @@ cc.Class({
         //         this._bar = value;
         //     }
         // },
-        flag: false,
     },
 
     // LIFE-CYCLE CALLBACKS:
 
-    // onLoad () {},
-
-    start () {
-        console.log("mask start");
+    onLoad () {
+        this.timer = 0;
     },
 
-    hide: function(){
-        /* for(var i = 1; i <= 255; i++)
-        {
-            this.node.opacity--;
-        } */
-        //var func = function (obj) {obj.node.opacity -= 1;};
-        this.flag = true;
-        /* for(var i = 1; i <= 255; i++){
-            setTimeout(function () {this.node.opacity--;}.bind(this), 100);
-        }  */
+    start () {
+
     },
 
     update (dt) {
-        if(this.flag && this.node.scaleY >= 0.1)
+        if(this.timer < 30)
         {
-            this.node.scaleY -= 0.1;
-            console.log(this.node.scaleY);
+            this.timer += dt;
         }
-        else{
-            this.flag = false;
-        }
+        this.node.getComponent('cc.Label').string = Math.ceil(30 - this.timer);
     },
 });
-// 以上语句就是将一个对象传给cc.Class
-

@@ -13,7 +13,6 @@ var question = {
     2: {btnTxts: ['香烟2','啤酒','口红','包'], answer: '香烟2'},
     3: {btnTxts: ['香烟3','啤酒','口红','包'], answer: '香烟3'},
     4: {btnTxts: ['香烟4','啤酒','口红','包'], answer: '香烟4'},
-    
 }
 
 //var questionArr = ['香烟','啤酒','口红','包'];
@@ -103,8 +102,8 @@ cc.Class({
             target.color = cc.color(0,255,0);
             if(flag)
             {
-            this.score += 500;
-            flag = false;
+                this.score += 500;
+                flag = false;
             }
         }
         else 
