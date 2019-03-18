@@ -76,6 +76,8 @@ cc.Class({
         flag = true
         if(questionId > 4) return;
         this.questionId = questionId;
+        var child = this.node.getChildByName('Picture' + this.questionId);
+        child.active = true;
         for(var i = 0; i < this.arr.length; i++)
         {
             this.arr[i].string = question[questionId].btnTxts[i];
@@ -100,6 +102,8 @@ cc.Class({
         {
             console.log('Y');
             target.color = cc.color(0,255,0);
+            var child = this.node.getChildByName('Picture' + this.questionId);
+            child.active = false;
             if(flag)
             {
                 this.score += 500;
@@ -117,7 +121,7 @@ cc.Class({
         setTimeout(function() {
             target.color = cc.color(255,255,255);
             this.setButton(this.questionId + 1);
-        }.bind(this), 3000);
+        }.bind(this), 1000);
     },
 
     playMusic(){
