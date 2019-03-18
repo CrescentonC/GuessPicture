@@ -28,6 +28,11 @@ cc.Class({
             type: cc.Prefab
         },
 
+        pics : {
+            default : null,
+            type: cc.Node
+        },
+
         arr: {
             default : [],
             type: cc.Label
@@ -113,6 +118,11 @@ cc.Class({
         }
 
         this.scoreLable.string = this.score;
+
+        if(!flag)
+        {
+            this.pics.findChildByName()
+        }
 
         setTimeout(function() {
             target.color = cc.color(255,255,255);
