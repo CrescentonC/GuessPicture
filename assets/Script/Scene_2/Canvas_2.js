@@ -10,15 +10,16 @@
 
 cc.Class(
 {
+    
     extends: cc.Component,
 
     properties:
     {
-        dotPrefab:
-        {
-            default: null,
-            type: cc.Prefab
-        },
+        // dotPrefab:
+        // {
+        //     default: null,
+        //     type: cc.Prefab
+        // },
         // foo: {
         //     // ATTRIBUTES:
         //     default: null,        // The default value will be used only when the component attaching
@@ -34,46 +35,56 @@ cc.Class(
         //         this._bar = value;
         //     }
         // },
+        // For calculating the random line
+        start_x:0,
+        start_y:0,
+        dest_x: 0,
+        dest_y: 0,
+        gradient: 0,
+        y_intercept: 0,
 
     },
 
     spawnNewDot(event)
     {
-        console.log(event);
-        var x = console.log(event._touches[0]._point.x);
-        var y = console.log(event._touches[0]._point.y);
+        // Get the touch coordinates of the point
+        var x = event._touches[0]._point.x - 540;
+        var y = event._touches[0]._point.y - 960;
 
-        // var newDot = cc.instantiate(this.dotPrefab)
-
-        // this.node.addChild(newDot);
-
-        // newDot.setPosition(x, y);
+        // Draw the dot only if the line is touched.
+        if (x > this.start_x && x < this.dest_x)
+        {
+            var tmp_y = this.gradient * x + this.y_intercept;
+            if (Math.abs(y - tmp_y) < 25)
+            {
+                y = tmp_y;
+                this.node.getComponent('cc.Graphics').circle(x, y, 10);
+                this.node.getComponent('cc.Graphics').fill();
+            } 
+        }
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad ()
     {
+        // Draw a big enough random line.
         var x = 0;
         var y = 0;
         while(x*x + y*y < 291600)
         {
-            var start_x = Math.floor(Math.random() * 390) - 540;
-            var start_y = Math.floor(Math.random() * 1280) - 640;
-            var dest_x = Math.floor(Math.random() * 490);
-            var dest_y = Math.floor(Math.random() * 1280) - 640;
-            var x = dest_x - start_x;
-            var y = Math.abs(dest_y - start_y);
+            this.start_x = Math.floor(Math.random() * 390) - 540;
+            this.start_y = Math.floor(Math.random() * 1280) - 640;
+            this.dest_x = Math.floor(Math.random() * 490);
+            this.dest_y = Math.floor(Math.random() * 1280) - 640;
+            var x = this.dest_x - this.start_x;
+            var y = Math.abs(this.dest_y - this.start_y);
         }
+        this.gradient = (this.dest_y - this.start_y) / (this.dest_x - this.start_x);
+        this.y_intercept = this.dest_y - this.gradient * this.dest_x;
 
-
-        // console.log(start_x);
-        // console.log(start_y);
-        // console.log(dest_x);
-        // console.log(dest_y);
-
-        this.node.getComponent('cc.Graphics').moveTo(start_x, start_y);
-        this.node.getComponent('cc.Graphics').lineTo(dest_x, dest_y);
+        this.node.getComponent('cc.Graphics').moveTo(this.start_x, this.start_y);
+        this.node.getComponent('cc.Graphics').lineTo(this.dest_x, this.dest_y);
         this.node.getComponent('cc.Graphics').stroke();
     },
 

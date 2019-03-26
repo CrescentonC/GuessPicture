@@ -101,6 +101,8 @@ cc.Class({
     },
 
     selectAnswer(event, id){
+        console.log(event);
+        console.log(id);
         console.log('selectAnswer ' + id);
         var target = event.target;
 

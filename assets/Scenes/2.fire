@@ -355,9 +355,9 @@
     "_lineCap": 0,
     "_fillColor": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 0,
+      "g": 0,
+      "b": 0,
       "a": 255
     },
     "_miterLimit": 10,
@@ -371,9 +371,12 @@
       "__id__": 4
     },
     "_enabled": true,
-    "dotPrefab": {
-      "__uuid__": "5642221b-64d8-4d0b-9e5b-6d01aeac1737"
-    },
+    "start_x": 0,
+    "start_y": 0,
+    "dest_x": 0,
+    "dest_y": 0,
+    "gradient": 0,
+    "y_intercept": 0,
     "_id": "3dP9K94N1H2bOMvf5C4kcI"
   },
   {

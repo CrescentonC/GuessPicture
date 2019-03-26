@@ -1,10 +1,11 @@
 {
-  "ver": "2.2.0",
+  "ver": "2.3.0",
   "uuid": "baa2426b-1311-4124-a510-80e0de4bf422",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
   "premultiplyAlpha": false,
+  "platformSettings": {},
   "subMetas": {
     "Perfect-sunrise-iPhone-X-wallpaper-ilikewallpaper_com": {
       "ver": "1.0.3",
