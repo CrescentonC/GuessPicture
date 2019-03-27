@@ -47,12 +47,11 @@ cc.Class(
 
     spawnNewDot(event)
     {
+        // Remove any previous dots.
         this.resetSelection();
         // Get the touch coordinates of the point
         var x = Math.round(event._touches[0]._point.x - this.node.width/2);
-        console.log('x =' + x);
         var y = event._touches[0]._point.y - this.node.height/2;
-        console.log('y = '+y);
 
         // Draw the dot only if the line is touched.
         if (x > this.start_x && x < this.dest_x)
@@ -67,10 +66,11 @@ cc.Class(
                 this.node.getComponent('cc.Graphics').fill();
             } 
         }
+        // Needed for confirm selection button
         this.selection_x = x;
-        console.log('selectx = ' +this.selection_x);
     },
 
+    // Reset the game, with the same line
     resetSelection()
     {
         this.node.getComponent('cc.Graphics').clear();
@@ -80,6 +80,7 @@ cc.Class(
         this.WinOrLose.string = "";
     },
 
+    // Check if player picked correct point
     confirmSelection()
     {
         if (Math.abs(((this.selection_x - this.start_x) / (this.dest_x - this.start_x)) - 0.5) < 0.01)
@@ -95,34 +96,30 @@ cc.Class(
     onLoad ()
     {
         // Draw a big enough random line.
+        // Line will be bigger than half the width of the screen.
+        // Line will be around the middle of the screen in terms of the y-axis.
         var x = 0;
-        var y = 0;
         while(x < (this.node.width / 2))
         {
             this.start_x = Math.floor(Math.random() * (this.node.width / 2)) - (this.node.width / 2);
             this.start_y = Math.floor(Math.random() * 100) - 50;
-            // console.log(this.start_y);
             this.dest_x = Math.floor(Math.random() * (this.node.width / 2));
             this.dest_y = Math.floor(Math.random() * 100) - 50;
-            // console.log(this.dest_y);
             var x = this.dest_x - this.start_x;
-            var y = Math.abs(this.dest_y - this.start_y);
-            // console.log(y);
         }
-        this.gradient = (this.dest_y - this.start_y) / (this.dest_x - this.start_x);
-        // console.log(this.gradient);
-        this.y_intercept = this.dest_y - this.gradient * this.dest_x;
-        // console.log(this.y_intercept);
-
         this.node.getComponent('cc.Graphics').moveTo(this.start_x, this.start_y);
         this.node.getComponent('cc.Graphics').lineTo(this.dest_x, this.dest_y);
         this.node.getComponent('cc.Graphics').stroke();
+
+        // Needed for checking if line is clicked on.
+        this.gradient = (this.dest_y - this.start_y) / (this.dest_x - this.start_x);
+        this.y_intercept = this.dest_y - this.gradient * this.dest_x;
     },
 
-    start ()
-    {
+    // start ()
+    // {
 
-    },
+    // },
 
     // update (dt) {},
 });
